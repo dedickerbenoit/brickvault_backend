@@ -4,7 +4,7 @@
 # ============================================
 # Base Stage - Common dependencies
 # ============================================
-FROM php:8.2-fpm-alpine AS base
+FROM php:8.3-fpm-alpine AS base
 
 # Install system dependencies
 RUN apk add --no-cache \
