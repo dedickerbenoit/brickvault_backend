@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -7,6 +9,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\JsonResponse as Json;
 
 class AuthController extends Controller
@@ -22,7 +25,7 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'User registered successfully',
-            'user' => $user
+            'user' => new UserResource($user),
         ], 201);
     }
 
@@ -42,7 +45,7 @@ class AuthController extends Controller
             'message' => 'Login successful',
             'access_token' => $token,
             'token_type' => 'Bearer',
-            'user' => $user
+            'user' => new UserResource($user),
         ], 200);
     }
 
