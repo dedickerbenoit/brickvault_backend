@@ -53,6 +53,16 @@ class AuthController extends Controller
         ], 200);
     }
 
+    public function user(): Json
+    {
+        /** @var User $user */
+        $user = Auth::user();
+
+        return response()->json([
+            'user' => new UserResource($user),
+        ]);
+    }
+
     public function logout(): Json
     {
         /** @var User $user */
