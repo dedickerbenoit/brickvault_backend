@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Models\User;
 use App\Models\Set;
+use App\Models\User;
 use App\Models\UserSet;
 use App\Models\UserWishlist;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class DashboardControllerTest extends TestCase
 {

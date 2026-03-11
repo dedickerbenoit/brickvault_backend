@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use App\Models\Set;
+use App\Models\User;
 use App\Models\UserWishlist;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
