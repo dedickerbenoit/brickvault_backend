@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Set;
+use App\Models\Theme;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -15,13 +16,12 @@ class SetFactory extends Factory
     public function definition(): array
     {
         return [
-            'set_number' => fake()->unique()->numerify('#####'),
+            'set_num' => fake()->unique()->numerify('#####-1'),
             'name' => fake()->words(3, true),
-            'theme' => fake()->randomElement(['Creator Expert', 'Star Wars', 'City', 'Technic', 'Ideas', 'Harry Potter']),
+            'theme_id' => Theme::factory(),
             'year' => fake()->numberBetween(2000, 2026),
-            'pieces' => fake()->numberBetween(100, 5000),
-            'retail_price' => fake()->randomFloat(2, 10, 500),
-            'image_url' => fake()->imageUrl(640, 480, 'lego', true),
+            'num_parts' => fake()->numberBetween(100, 5000),
+            'img_url' => fake()->imageUrl(640, 480, 'lego', true),
         ];
     }
 }

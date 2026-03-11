@@ -57,7 +57,7 @@ class UserWishlistTest extends TestCase
         $wishlist = UserWishlist::factory()->forUser($user)->forSet($set)->create();
 
         $this->assertEquals($set->id, $wishlist->set->id);
-        $this->assertEquals($set->set_number, $wishlist->set->set_number);
+        $this->assertEquals($set->set_num, $wishlist->set->set_num);
     }
 
     #[Test]
