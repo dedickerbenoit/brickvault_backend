@@ -3,12 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\ResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-use App\Notifications\ResetPasswordNotification;
 
 class User extends Authenticatable
 {
@@ -18,6 +18,7 @@ class User extends Authenticatable
     /**
      * The attributes that are NOT mass assignable.
      * Using $guarded to prevent mass assignment vulnerabilities.
+     *
      * @var array<string>
      */
     protected $guarded = ['id'];
@@ -45,7 +46,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function sendPasswordResetNotification($token):void
+    public function sendPasswordResetNotification($token): void
     {
         $this->notify(new ResetPasswordNotification($token));
     }
