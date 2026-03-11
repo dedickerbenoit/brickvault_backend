@@ -9,10 +9,10 @@ use App\Http\Requests\ForgotPasswordRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ResetPasswordRequest;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\UserResource;
+use App\Models\User;
 use Illuminate\Http\JsonResponse as Json;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
@@ -20,7 +20,7 @@ class AuthController extends Controller
 {
     public function register(RegisterRequest $request): Json
     {
-        $user = new User();
+        $user = new User;
         $user->first_name = $request->first_name;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -35,9 +35,9 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request): Json
     {
-        if (!Auth::attempt($request->validated())) {
+        if (! Auth::attempt($request->validated())) {
             return response()->json([
-                'message' => 'Invalid credentials'
+                'message' => 'Invalid credentials',
             ], 401);
         }
 
@@ -72,7 +72,7 @@ class AuthController extends Controller
         }
 
         return response()->json([
-            'message' => 'Logout successful'
+            'message' => 'Logout successful',
         ], 200);
     }
 

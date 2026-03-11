@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Models;
 
-use Tests\TestCase;
 use App\Models\Set;
 use App\Models\User;
 use App\Models\UserSet;
@@ -10,6 +9,7 @@ use App\Models\UserWishlist;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class SetTest extends TestCase
 {
@@ -18,7 +18,7 @@ class SetTest extends TestCase
     #[Test]
     public function it_has_user_sets_relationship()
     {
-        $set = new Set();
+        $set = new Set;
 
         $relation = $set->userSets();
 
@@ -29,7 +29,7 @@ class SetTest extends TestCase
     #[Test]
     public function it_has_user_wishlists_relationship()
     {
-        $set = new Set();
+        $set = new Set;
 
         $relation = $set->userWishlists();
 
