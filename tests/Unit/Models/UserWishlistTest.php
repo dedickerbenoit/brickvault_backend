@@ -2,13 +2,13 @@
 
 namespace Tests\Unit\Models;
 
-use Tests\TestCase;
-use App\Models\User;
 use App\Models\Set;
+use App\Models\User;
 use App\Models\UserWishlist;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class UserWishlistTest extends TestCase
 {
@@ -17,7 +17,7 @@ class UserWishlistTest extends TestCase
     #[Test]
     public function it_belongs_to_user()
     {
-        $wishlist = new UserWishlist();
+        $wishlist = new UserWishlist;
 
         $relation = $wishlist->user();
 
@@ -28,7 +28,7 @@ class UserWishlistTest extends TestCase
     #[Test]
     public function it_belongs_to_set()
     {
-        $wishlist = new UserWishlist();
+        $wishlist = new UserWishlist;
 
         $relation = $wishlist->set();
 

@@ -2,13 +2,13 @@
 
 namespace Tests\Unit\Models;
 
-use Tests\TestCase;
-use App\Models\User;
 use App\Models\Set;
+use App\Models\User;
 use App\Models\UserSet;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class UserSetTest extends TestCase
 {
@@ -17,7 +17,7 @@ class UserSetTest extends TestCase
     #[Test]
     public function it_belongs_to_user()
     {
-        $userSet = new UserSet();
+        $userSet = new UserSet;
 
         $relation = $userSet->user();
 
@@ -28,7 +28,7 @@ class UserSetTest extends TestCase
     #[Test]
     public function it_belongs_to_set()
     {
-        $userSet = new UserSet();
+        $userSet = new UserSet;
 
         $relation = $userSet->set();
 
