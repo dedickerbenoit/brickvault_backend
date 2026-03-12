@@ -85,6 +85,6 @@ class UserSetTest extends TestCase
         $userSet = UserSet::factory()->forUser($user)->forSet($set)->create();
 
         $this->assertEquals($set->id, $userSet->set->id);
-        $this->assertEquals($set->set_number, $userSet->set->set_number);
+        $this->assertEquals($set->set_num, $userSet->set->set_num);
     }
 }
