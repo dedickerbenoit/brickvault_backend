@@ -72,7 +72,7 @@ class ImportSets extends Command
     private function downloadCsv(): ?string
     {
         $this->info('Downloading sets CSV...');
-
+        /** @var \Illuminate\Http\Client\Response $response */
         $response = Http::timeout(300)->get(self::CSV_URL);
 
         if (! $response->successful()) {
@@ -186,12 +186,16 @@ class ImportSets extends Command
 
                     if ($existing) {
                         if ($this->hasChanged($existing, $data)) {
+                            $translations = $existing->getNameTranslations();
+                            $translations['en'] = $data['name'];
+                            $data['name'] = $translations;
                             $existing->update($data);
                             $this->updated++;
                         } else {
                             $this->skipped++;
                         }
                     } else {
+                        $data['name'] = ['en' => $data['name']];
                         Set::create($data);
                         $this->inserted++;
                     }
@@ -208,7 +212,7 @@ class ImportSets extends Command
 
     private function hasChanged(Set $existing, array $data): bool
     {
-        return $existing->name !== $data['name']
+        return ($existing->getNameTranslations()['en'] ?? null) !== $data['name']
             || $existing->year !== $data['year']
             || $existing->theme_id !== $data['theme_id']
             || $existing->num_parts !== $data['num_parts']
