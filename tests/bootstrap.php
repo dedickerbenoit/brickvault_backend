@@ -21,4 +21,4 @@ foreach ($testEnv as $key => $value) {
     $_SERVER[$key] = $value;
 }
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';

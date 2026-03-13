@@ -178,8 +178,8 @@ class LegoTranslationServiceTest extends TestCase
         ];
 
         $html = '<html><body><script id="__NEXT_DATA__" type="application/json">'
-            . json_encode(['props' => ['apolloState' => $apolloState]])
-            . '</script></body></html>';
+            .json_encode(['props' => ['apolloState' => $apolloState]])
+            .'</script></body></html>';
 
         Http::fake([
             'www.lego.com/*' => Http::response($html),

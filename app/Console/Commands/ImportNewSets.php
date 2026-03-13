@@ -71,7 +71,7 @@ class ImportNewSets extends Command
         }
 
         foreach ($enProducts as $product) {
-            $setNum = $product['code'] . '-1';
+            $setNum = $product['code'].'-1';
             $frName = $frByCode[$product['code']] ?? null;
 
             $set = Set::where('set_num', $setNum)->first();

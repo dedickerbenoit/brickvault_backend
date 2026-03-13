@@ -29,8 +29,8 @@ class ImportNewSetsCommandTest extends TestCase
         $apolloState['ProductQueryResult:0'] = ['total' => $total];
 
         foreach ($products as $product) {
-            $key = 'Product:' . $product['code'];
-            $imgKey = 'Image:' . $product['code'];
+            $key = 'Product:'.$product['code'];
+            $imgKey = 'Image:'.$product['code'];
 
             $apolloState[$key] = [
                 'productCode' => $product['code'],
@@ -39,7 +39,7 @@ class ImportNewSetsCommandTest extends TestCase
             ];
 
             $apolloState[$imgKey] = [
-                'url' => $product['img_url'] ?? 'https://www.lego.com/cdn/img/' . $product['code'] . '.jpg',
+                'url' => $product['img_url'] ?? 'https://www.lego.com/cdn/img/'.$product['code'].'.jpg',
             ];
         }
 
@@ -47,7 +47,7 @@ class ImportNewSetsCommandTest extends TestCase
             'props' => ['apolloState' => $apolloState],
         ]);
 
-        return '<html><head></head><body><script id="__NEXT_DATA__" type="application/json">' . $nextData . '</script></body></html>';
+        return '<html><head></head><body><script id="__NEXT_DATA__" type="application/json">'.$nextData.'</script></body></html>';
     }
 
     #[Test]

@@ -241,7 +241,7 @@ class LegoTranslationService
             'en' => 'en-US',
             'de' => 'de-DE',
             'es' => 'es-ES',
-            default => "{$locale}-" . strtoupper($locale),
+            default => "{$locale}-".strtoupper($locale),
         };
     }
 }
