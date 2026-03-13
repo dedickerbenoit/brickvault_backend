@@ -16,7 +16,7 @@ class ThemeFactory extends Factory
     {
         return [
             'id' => fake()->unique()->numberBetween(1, 99999),
-            'name' => fake()->randomElement(['Star Wars', 'City', 'Technic', 'Creator Expert', 'Ideas', 'Harry Potter', 'Ninjago', 'Marvel']),
+            'name' => ['en' => fake()->randomElement(['Star Wars', 'City', 'Technic', 'Creator Expert', 'Ideas', 'Harry Potter', 'Ninjago', 'Marvel'])],
             'parent_id' => null,
         ];
     }
