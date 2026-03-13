@@ -69,6 +69,7 @@ class ImportThemes extends Command
     {
         $this->info('Downloading themes CSV...');
 
+        /** @var \Illuminate\Http\Client\Response $response */
         $response = Http::timeout(120)->get(self::CSV_URL);
 
         if (! $response->successful()) {
@@ -146,13 +147,19 @@ class ImportThemes extends Command
         $existing = Theme::find($data['id']);
 
         if ($existing) {
-            if ($existing->name !== $data['name'] || $existing->parent_id !== $data['parent_id']) {
+            $enName = $existing->getNameTranslations()['en'] ?? null;
+
+            if ($enName !== $data['name'] || $existing->parent_id !== $data['parent_id']) {
+                $translations = $existing->getNameTranslations();
+                $translations['en'] = $data['name'];
+                $data['name'] = $translations;
                 $existing->update($data);
                 $this->updated++;
             } else {
                 $this->skipped++;
             }
         } else {
+            $data['name'] = ['en' => $data['name']];
             Theme::create($data);
             $this->inserted++;
         }

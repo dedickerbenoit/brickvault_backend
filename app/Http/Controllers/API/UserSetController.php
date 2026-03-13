@@ -94,7 +94,8 @@ class UserSetController extends Controller
         $sets = Set::with('theme')
             ->where(function ($q) use ($query) {
                 $q->where('set_num', 'like', "%{$query}%")
-                    ->orWhere('name', 'like', "%{$query}%");
+                    ->orWhere('name->en', 'like', "%{$query}%")
+                    ->orWhere('name->fr', 'like', "%{$query}%");
             })
             ->limit(15)
             ->get();

@@ -17,7 +17,7 @@ class SetFactory extends Factory
     {
         return [
             'set_num' => fake()->unique()->numerify('#####-1'),
-            'name' => fake()->words(3, true),
+            'name' => ['en' => fake()->words(3, true)],
             'theme_id' => Theme::factory(),
             'year' => fake()->numberBetween(2000, 2026),
             'num_parts' => fake()->numberBetween(100, 5000),

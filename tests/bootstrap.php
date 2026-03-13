@@ -12,6 +12,7 @@ $testEnv = [
     'QUEUE_CONNECTION' => 'sync',
     'MAIL_MAILER' => 'array',
     'BCRYPT_ROUNDS' => '4',
+    'APP_LOCALE' => 'en',
 ];
 
 foreach ($testEnv as $key => $value) {
