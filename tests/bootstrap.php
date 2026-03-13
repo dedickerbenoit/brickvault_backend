@@ -12,6 +12,7 @@ $testEnv = [
     'QUEUE_CONNECTION' => 'sync',
     'MAIL_MAILER' => 'array',
     'BCRYPT_ROUNDS' => '4',
+    'APP_LOCALE' => 'en',
 ];
 
 foreach ($testEnv as $key => $value) {
@@ -20,4 +21,4 @@ foreach ($testEnv as $key => $value) {
     $_SERVER[$key] = $value;
 }
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
